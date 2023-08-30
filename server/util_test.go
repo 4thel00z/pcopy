@@ -1,9 +1,9 @@
 package server
 
 import (
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/test"
 	"strings"
 	"testing"
 )

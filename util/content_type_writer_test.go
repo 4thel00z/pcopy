@@ -2,7 +2,7 @@ package util
 
 import (
 	"crypto/rand"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/test"
 	"net/http/httptest"
 	"testing"
 )

@@ -3,8 +3,8 @@ package cmd
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/test"
 	"os"
 	"os/user"
 	"path/filepath"

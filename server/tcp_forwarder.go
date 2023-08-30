@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/util"
 	"io"
 	"log"
 	"net"

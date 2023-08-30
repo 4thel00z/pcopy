@@ -13,7 +13,7 @@ nfpms:
   -
     package_name: pcopy
     file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
-    homepage: https://github.com/4thel00z/pcopy/pcopy
+    homepage: https://github.com/4thel00z/pcopy
     maintainer: ransomware <4thel00z@gmail.com>
     description: Copy/paste across machines
     license: Apache 2.0

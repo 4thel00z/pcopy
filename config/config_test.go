@@ -2,8 +2,8 @@ package config
 
 import (
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/test"
 	"io/ioutil"
 	"os"
 	"path/filepath"

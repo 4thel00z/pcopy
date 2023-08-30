@@ -1,4 +1,4 @@
-module github.com/4thel00z/pcopy/pcopy
+module github.com/4thel00z/pcopy
 
 go 1.16
 

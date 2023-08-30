@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/config"
 	"log"
 	"net/http"
 	"net/url"

@@ -1,4 +1,4 @@
-{{- /*gotype: github.com/4thel00z/pcopy/pcopy/server.webTemplateConfig*/ -}}
+{{- /*gotype: github.com/4thel00z/pcopy/server.webTemplateConfig*/ -}}
 {{- $url := .Config.ServerAddr | expandServerAddr -}}
 NAME
   pcopy - copy/paste across machines
@@ -39,4 +39,4 @@ LIMITS:
   Per-file expiration limits: {{if .Config.FileExpireAfterTextMax}}{{.Config.FileExpireAfterTextMax | durationToHuman }}{{else}}never{{end}} if text, {{if .Config.FileExpireAfterNonTextMax}}{{.Config.FileExpireAfterNonTextMax | durationToHuman }}{{else}}never{{end}} otherwise
   Allowed file modes: {{stringsJoin .Config.FileModesAllowed ", "}}
 
-To find out more about pcopy, check out https://github.com/4thel00z/pcopy/pcopy.
+To find out more about pcopy, check out https://github.com/4thel00z/pcopy.

@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"github.com/urfave/cli/v2"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/server"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/server"
 	"log"
 	"os"
 )

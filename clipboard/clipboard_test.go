@@ -3,11 +3,11 @@ package clipboard
 import (
 	"bytes"
 	_ "embed" // Required for go:embed instructions
-	"github.com/4thel00z/pcopy/pcopy/clipboard/clipboardtest"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/config/configtest"
-	"github.com/4thel00z/pcopy/pcopy/test"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/clipboard/clipboardtest"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/config/configtest"
+	"github.com/4thel00z/pcopy/test"
+	"github.com/4thel00z/pcopy/util"
 	"io"
 	"os"
 	"strings"

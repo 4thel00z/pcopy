@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/test"
 	"os"
 	"path/filepath"
 	"testing"

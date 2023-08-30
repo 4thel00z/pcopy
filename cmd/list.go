@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/util"
 	"math"
 	"strings"
 )

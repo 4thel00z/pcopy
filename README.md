@@ -11,7 +11,7 @@ The modifications on this fork, enable the server to be run behind a revery prox
 ----
 
 [![Release](https://img.shields.io/github/release/4thel00z/pcopy.svg?color=success&style=flat-square)](https://github.com/4thel00z/pcopy/releases/latest)
-[![Go Reference](https://pkg.go.dev/badge/github.com/4thel00z/pcopy/pcopy.svg)](https://pkg.go.dev/github.com/4thel00z/pcopy/pcopy)
+[![Go Reference](https://pkg.go.dev/badge/github.com/4thel00z/pcopy.svg)](https://pkg.go.dev/github.com/4thel00z/pcopy)
 [![Tests](https://github.com/4thel00z/pcopy/workflows/test/badge.svg)](https://github.com/4thel00z/pcopy/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/4thel00z/pcopy)](https://goreportcard.com/report/github.com/4thel00z/pcopy)
 [![codecov](https://codecov.io/gh/4thel00z/pcopy/branch/master/graph/badge.svg?token=bdrFZttMsk)](https://codecov.io/gh/4thel00z/pcopy)
@@ -79,7 +79,7 @@ docker run --rm -it ransomwarezz/pcopy
 **Go:**
 ```bash
 # requires Go 1.16
-go get -u github.com/4thel00z/pcopy/pcopy
+go get -u github.com/4thel00z/pcopy
 ```
 
 **Manual install** (*any x86_64-based Linux*)**:**

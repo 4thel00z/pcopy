@@ -2,11 +2,11 @@ package cmd
 
 import (
 	"encoding/base64"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/config/configtest"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/test"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/config/configtest"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/test"
+	"github.com/4thel00z/pcopy/util"
 	"os"
 	"path/filepath"
 	"testing"

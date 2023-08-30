@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/util"
 	"strings"
 )
 

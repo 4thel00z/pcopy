@@ -2,9 +2,9 @@ package server
 
 import (
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/crypto"
-	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/crypto"
+	"github.com/4thel00z/pcopy/util"
 	"strings"
 )
 

@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/4thel00z/pcopy/pcopy/client"
-	"github.com/4thel00z/pcopy/pcopy/config"
-	"github.com/4thel00z/pcopy/pcopy/server"
+	"github.com/4thel00z/pcopy/client"
+	"github.com/4thel00z/pcopy/config"
+	"github.com/4thel00z/pcopy/server"
 	"github.com/urfave/cli/v2"
 )
 

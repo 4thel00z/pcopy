@@ -3,7 +3,7 @@ package util
 import (
 	"crypto/x509"
 	"encoding/pem"
-	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/test"
 	"io"
 	"net/http"
 	"net/http/httptest"

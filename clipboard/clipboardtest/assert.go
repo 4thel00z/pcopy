@@ -1,7 +1,7 @@
 package clipboardtest
 
 import (
-	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/config"
 	"io/ioutil"
 	"os"
 	"path/filepath"
