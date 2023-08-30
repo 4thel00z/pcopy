@@ -6,13 +6,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"golang.org/x/time/rate"
 	"github.com/4thel00z/pcopy/pcopy/clipboard"
 	"github.com/4thel00z/pcopy/pcopy/clipboard/clipboardtest"
 	"github.com/4thel00z/pcopy/pcopy/config"
 	"github.com/4thel00z/pcopy/pcopy/config/configtest"
 	"github.com/4thel00z/pcopy/pcopy/crypto"
 	"github.com/4thel00z/pcopy/pcopy/test"
+	"golang.org/x/time/rate"
 	"io"
 	"io/ioutil"
 	"log"
@@ -686,7 +686,7 @@ func TestServer_AuthorizeBasicSuccessProtected(t *testing.T) {
 	server := newTestServer(t, conf)
 
 	req, _ := http.NewRequest("GET", "/", nil)
-	req.Header.Set("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte("x:some password")))
+	req.Header.Set("X-Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte("x:some password")))
 	if err := server.authorize(req); err != nil {
 		t.Fatal(err)
 	}
@@ -698,7 +698,7 @@ func TestServer_AuthorizeBasicFailureProtected(t *testing.T) {
 	server := newTestServer(t, conf)
 
 	req, _ := http.NewRequest("GET", "/", nil)
-	req.Header.Set("Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte("x:incorrect password")))
+	req.Header.Set("X-Authorization", "Basic "+base64.StdEncoding.EncodeToString([]byte("x:incorrect password")))
 	if err := server.authorize(req); err != ErrHTTPUnauthorized {
 		t.Fatalf("expected invalid auth, got %#v", err)
 	}
@@ -711,7 +711,7 @@ func TestServer_AuthorizeHmacSuccessProtected(t *testing.T) {
 
 	req, _ := http.NewRequest("GET", "/", nil)
 	hmac, _ := crypto.GenerateAuthHMAC(conf.Key.Bytes, "GET", "/", time.Minute)
-	req.Header.Set("Authorization", hmac)
+	req.Header.Set("X-Authorization", hmac)
 	if err := server.authorize(req); err != nil {
 		t.Fatal(err)
 	}
@@ -724,7 +724,7 @@ func TestServer_AuthorizeHmacFailureWrongPathProtected(t *testing.T) {
 
 	req, _ := http.NewRequest("GET", "/", nil)
 	hmac, _ := crypto.GenerateAuthHMAC(conf.Key.Bytes, "GET", "/wrong-path", time.Minute)
-	req.Header.Set("Authorization", hmac)
+	req.Header.Set("X-Authorization", hmac)
 	if err := server.authorize(req); err != ErrHTTPUnauthorized {
 		t.Fatalf("expected invalid auth, got %#v", err)
 	}
@@ -737,7 +737,7 @@ func TestServer_AuthorizeHmacFailureWrongMethodProtected(t *testing.T) {
 
 	req, _ := http.NewRequest("GET", "/", nil)
 	hmac, _ := crypto.GenerateAuthHMAC(conf.Key.Bytes, "PUT", "/", time.Minute)
-	req.Header.Set("Authorization", hmac)
+	req.Header.Set("X-Authorization", hmac)
 	if err := server.authorize(req); err != ErrHTTPUnauthorized {
 		t.Fatalf("expected invalid auth, got %#v", err)
 	}
@@ -750,7 +750,7 @@ func TestServer_AuthorizeHmacFailureWrongKeyProtected(t *testing.T) {
 
 	req, _ := http.NewRequest("GET", "/", nil)
 	hmac, _ := crypto.GenerateAuthHMAC(make([]byte, 32), "GET", "/", time.Minute)
-	req.Header.Set("Authorization", hmac)
+	req.Header.Set("X-Authorization", hmac)
 	if err := server.authorize(req); err != ErrHTTPUnauthorized {
 		t.Fatalf("expected invalid auth, got %#v", err)
 	}

@@ -4,12 +4,12 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"github.com/4thel00z/pcopy/pcopy/client"
 	"github.com/4thel00z/pcopy/pcopy/config"
 	"github.com/4thel00z/pcopy/pcopy/crypto"
 	"github.com/4thel00z/pcopy/pcopy/server"
 	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/urfave/cli/v2"
 	"io"
 	"os"
 	"regexp"
@@ -37,6 +37,8 @@ var cmdCopy = &cli.Command{
 		&cli.BoolFlag{Name: "read-only", Aliases: []string{"ro"}, Usage: "make remote file read-only (if supported by the server)"},
 		&cli.BoolFlag{Name: "read-write", Aliases: []string{"rw"}, Usage: "allow file to be overwritten (if supported by the server)"},
 		&cli.StringFlag{Name: "ttl", Aliases: []string{"t"}, DefaultText: "server default", Usage: "set duration the link is valid for to `TTL`"},
+		&cli.StringFlag{Name: "username", Aliases: []string{"u"}, DefaultText: "", Usage: "set basic auth user name, in case remote clipboard is behind a proxy"},
+		&cli.StringFlag{Name: "password", Aliases: []string{"pw"}, DefaultText: "", Usage: "set basic auth password, in case remote clipboard is behind a proxy"},
 	},
 	Description: `Without FILE arguments, this command reads STDIN and copies it to the remote clipboard. ID is
 the remote file name, and CLIPBOARD is the name of the clipboard (both default to 'default').
@@ -71,6 +73,8 @@ var cmdPaste = &cli.Command{
 		&cli.StringFlag{Name: "cert", Aliases: []string{"C"}, Usage: "load certificate file `CERT` to use for cert pinning"},
 		&cli.StringFlag{Name: "server", Aliases: []string{"S"}, Usage: "connect to server `ADDR[:PORT]` (default port: 2586)"},
 		&cli.BoolFlag{Name: "quiet", Aliases: []string{"q"}, Usage: "do not output progress"},
+		&cli.StringFlag{Name: "username", Aliases: []string{"u"}, DefaultText: "", Usage: "set basic auth user name, in case remote clipboard is behind a proxy"},
+		&cli.StringFlag{Name: "password", Aliases: []string{"pw"}, DefaultText: "", Usage: "set basic auth password, in case remote clipboard is behind a proxy"},
 	},
 	Description: `Without DIR argument, this command write the remote clipboard contents to STDOUT. ID is the
 remote file name, and CLIPBOARD is the name of the clipboard (both default to 'default').
@@ -96,7 +100,7 @@ func execCopy(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	pclient, err := client.NewClient(conf)
+	pclient, err := client.NewClient(conf, c.String("username"), c.String("password"))
 	if err != nil {
 		return err
 	}
@@ -224,7 +228,7 @@ func execPaste(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	pclient, err := client.NewClient(conf)
+	pclient, err := client.NewClient(conf, c.String("username"), c.String("password"))
 	if err != nil {
 		return err
 	}

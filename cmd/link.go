@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"github.com/4thel00z/pcopy/pcopy/client"
 	"github.com/4thel00z/pcopy/pcopy/config"
 	"github.com/4thel00z/pcopy/pcopy/server"
+	"github.com/urfave/cli/v2"
 )
 
 var cmdLink = &cli.Command{
@@ -17,6 +17,8 @@ var cmdLink = &cli.Command{
 	Category:  categoryClient,
 	Flags: []cli.Flag{
 		&cli.StringFlag{Name: "config", Aliases: []string{"c"}, Usage: "load config file from `FILE`"},
+		&cli.StringFlag{Name: "username", Aliases: []string{"u"}, DefaultText: "", Usage: "set basic auth user name, in case remote clipboard is behind a proxy"},
+		&cli.StringFlag{Name: "password", Aliases: []string{"pw"}, DefaultText: "", Usage: "set basic auth password, in case remote clipboard is behind a proxy"},
 	},
 	Description: `Retrieves the link for the given clipboard file that can be used to share
 with others.
@@ -31,7 +33,7 @@ func execLink(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	pclient, err := client.NewClient(conf)
+	pclient, err := client.NewClient(conf, c.String("username"), c.String("password"))
 	if err != nil {
 		return err
 	}

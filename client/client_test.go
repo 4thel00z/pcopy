@@ -47,8 +47,8 @@ func TestClient_CopyWithHMACAuthSuccess(t *testing.T) {
 		if r.URL.Path != "/hi-there" {
 			t.Fatalf("expected path %s, got %s", "/hi-there", r.URL.Path)
 		}
-		if !strings.HasPrefix(r.Header.Get("Authorization"), "HMAC ") {
-			t.Fatalf("expected auth header to have HMAC prefix, got %s", r.Header.Get("Authorization"))
+		if !strings.HasPrefix(r.Header.Get("X-Authorization"), "HMAC ") {
+			t.Fatalf("expected auth header to have HMAC prefix, got %s", r.Header.Get("X-Authorization"))
 		}
 		w.WriteHeader(http.StatusCreated)
 	}))
@@ -316,7 +316,7 @@ func newTestClientAndServer(t *testing.T, conf *config.Config, handler http.Hand
 	serv := httptest.NewTLSServer(handler)
 	conf.ServerAddr = config.ExpandServerAddr(serv.URL)
 
-	client, err := NewClient(conf)
+	client, err := NewClient(conf, "", "")
 	if err != nil {
 		t.Fatal(err)
 	}

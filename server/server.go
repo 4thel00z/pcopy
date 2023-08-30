@@ -24,11 +24,11 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"golang.org/x/time/rate"
 	"github.com/4thel00z/pcopy/pcopy/clipboard"
 	"github.com/4thel00z/pcopy/pcopy/config"
 	"github.com/4thel00z/pcopy/pcopy/crypto"
 	"github.com/4thel00z/pcopy/pcopy/util"
+	"golang.org/x/time/rate"
 	htmltemplate "html/template"
 	"io"
 	"log"
@@ -711,7 +711,7 @@ func (s *Server) authorize(r *http.Request) error {
 		return nil
 	}
 
-	auth := r.Header.Get("Authorization")
+	auth := r.Header.Get("X-Authorization")
 	if authParams, ok := r.URL.Query()[queryParamAuth]; ok && len(authParams) > 0 {
 		auth = authParams[0]
 	}

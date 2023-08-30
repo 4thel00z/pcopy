@@ -171,7 +171,7 @@ func ReadCurlPinnedPublicKeyFromFile(filename string) (string, error) {
 }
 
 // GenerateAuthHMAC generates the HMAC auth header used to authorize uthenticate against the server.
-// The result can be used in the HTTP "Authorization" header. If the TTL is non-zero, the authorization
+// The result can be used in the HTTP "X-Authorization" header. If the TTL is non-zero, the authorization
 // header will only be valid for the given duration.
 func GenerateAuthHMAC(key []byte, method string, path string, ttl time.Duration) (string, error) {
 	return generateAuthHMAC(time.Now().Unix(), key, method, path, ttl)

@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"github.com/4thel00z/pcopy/pcopy/client"
 	"github.com/4thel00z/pcopy/pcopy/config"
 	"github.com/4thel00z/pcopy/pcopy/crypto"
 	"github.com/4thel00z/pcopy/pcopy/server"
 	"github.com/4thel00z/pcopy/pcopy/util"
+	"github.com/urfave/cli/v2"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -26,6 +26,8 @@ var cmdJoin = &cli.Command{
 		&cli.BoolFlag{Name: "force", Aliases: []string{"f"}, Usage: "overwrite config if it already exists"},
 		&cli.BoolFlag{Name: "auto", Aliases: []string{"a"}, Usage: "automatically choose clipboard alias"},
 		&cli.BoolFlag{Name: "quiet", Aliases: []string{"q"}, Usage: "do not print instructions"},
+		&cli.StringFlag{Name: "username", Aliases: []string{"u"}, DefaultText: "", Usage: "set basic auth user name, in case remote clipboard is behind a proxy"},
+		&cli.StringFlag{Name: "password", Aliases: []string{"pw"}, DefaultText: "", Usage: "set basic auth password, in case remote clipboard is behind a proxy"},
 	},
 	Description: `Connects to a remote clipboard with the server address SERVER. CLIPBOARD is the local alias
 that can be used to identify it (default is 'default'). This command is interactive and
@@ -71,7 +73,7 @@ func execJoin(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	pclient, err := client.NewClient(&config.Config{ServerAddr: info.ServerAddr})
+	pclient, err := client.NewClient(&config.Config{ServerAddr: info.ServerAddr}, c.String("username"), c.String("password"))
 	if err != nil {
 		return err
 	}
@@ -145,7 +147,7 @@ func readServerInfo(c *cli.Context, rawServerAddr string) (*server.Info, error) 
 	// Kick off parallel server info query
 	for _, serverAddr := range serverAddrs {
 		go func(serverAddr string) {
-			pclient, _ := client.NewClient(&config.Config{ServerAddr: serverAddr})
+			pclient, _ := client.NewClient(&config.Config{ServerAddr: serverAddr}, c.String("username"), c.String("password"))
 			serverInfo, err := pclient.ServerInfo()
 			if err != nil {
 				resultChan <- &serverInfoResult{addr: serverAddr, err: err}

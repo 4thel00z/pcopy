@@ -29,16 +29,20 @@ const (
 // verify the user password, and ultimately to copy/paste files.
 type Client struct {
 	config     *config.Config
+	username   string
+	password   string
 	httpClient *http.Client // Allow injecting HTTP client for testing
 }
 
 // NewClient creates a new pcopy client. It fails if the ServerAddr is not filled.
-func NewClient(conf *config.Config) (*Client, error) {
+func NewClient(conf *config.Config, username, password string) (*Client, error) {
 	if conf.ServerAddr == "" {
 		return nil, errMissingServerAddr
 	}
 	return &Client{
-		config: conf,
+		config:   conf,
+		username: username,
+		password: password,
 	}, nil
 }
 
@@ -58,6 +62,11 @@ func (c *Client) Copy(reader io.ReadCloser, id string, ttl time.Duration, mode s
 	if err := c.addAuthHeader(req, nil); err != nil {
 		return nil, err
 	}
+
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
+	}
+
 	req.Header.Set(server.HeaderFormat, server.HeaderFormatNone)
 	if ttl > 0 {
 		req.Header.Set(server.HeaderTTL, ttl.String())
@@ -109,6 +118,11 @@ func (c *Client) Reserve(id string) (*server.File, error) {
 	if err := c.addAuthHeader(req, nil); err != nil {
 		return nil, err
 	}
+
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
+	}
+
 	req.Header.Set(server.HeaderReserve, server.HeaderReserveEnabled)
 
 	resp, err := client.Do(req)
@@ -135,6 +149,10 @@ func (c *Client) Paste(writer io.Writer, id string) error {
 	}
 	if err := c.addAuthHeader(req, nil); err != nil {
 		return err
+	}
+
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
 	}
 
 	resp, err := client.Do(req)
@@ -210,6 +228,10 @@ func (c *Client) FileInfo(id string) (*server.File, error) {
 		return nil, err
 	}
 
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
+	}
+
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
@@ -269,6 +291,10 @@ func (c *Client) Verify(cert *x509.Certificate, key *crypto.Key) error {
 		return err
 	}
 
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
+	}
+
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
@@ -292,7 +318,7 @@ func (c *Client) addAuthHeader(req *http.Request, key *crypto.Key) error {
 		return err
 	}
 
-	req.Header.Set("Authorization", auth)
+	req.Header.Set("X-Authorization", auth)
 	return nil
 }
 

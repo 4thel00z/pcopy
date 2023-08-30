@@ -102,7 +102,7 @@ function login(e) {
     let xhr = new XMLHttpRequest()
     xhr.open(method, url)
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-    xhr.setRequestHeader('Authorization', generateAuthHMAC(key, method, path))
+    xhr.setRequestHeader('X-Authorization', generateAuthHMAC(key, method, path))
 
     xhr.addEventListener('readystatechange', function (e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
