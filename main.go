@@ -6,10 +6,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/urfave/cli/v2"
-	"github.com/4thel00z/pcopy/cmd"
 	"os"
 	"runtime"
+
+	"github.com/4thel00z/pcopy/cmd"
+	"github.com/urfave/cli/v2"
 )
 
 var (
@@ -23,7 +24,7 @@ func main() {
 Try 'pcopy COMMAND --help' for more information.
 
 pcopy %s (%s), runtime %s, built at %s
-Copyright (C) 2021 Philipp C. Heckel, distributed under the Apache License 2.0
+Copyright (C) 2023 4thel00z, distributed under the Apache License 2.0
 `, version, commit[:7], runtime.Version(), date)
 
 	app := cmd.New()
