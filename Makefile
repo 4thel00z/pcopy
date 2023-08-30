@@ -1,78 +1,58 @@
 GO=$(shell which go)
 VERSION := $(shell git describe --tag)
 
-.PHONY:
+.PHONY: help check test coverage coverage-html coverage-upload fmt fmt-check vet lint staticcheck build build-snapshot build-simple clean release release-snapshot install install-deb
 
-help:
-	@echo "Typical commands:"
-	@echo "  make check                       - Run all tests, vetting/formatting checks and linters"
-	@echo "  make fmt build-snapshot install  - Build latest and install to local system"
+## Display this help message
+help: Makefile
 	@echo
-	@echo "Test/check:"
-	@echo "  make test                        - Run tests"
-	@echo "  make coverage                    - Run tests and show coverage"
-	@echo "  make coverage-html               - Run tests and show coverage (as HTML)"
-	@echo "  make coverage-upload             - Upload coverage results to codecov.io"
+	@echo " Choose a command to run:"
 	@echo
-	@echo "Lint/format:"
-	@echo "  make fmt                         - Run 'go fmt'"
-	@echo "  make fmt-check                   - Run 'go fmt', but don't change anything"
-	@echo "  make vet                         - Run 'go vet'"
-	@echo "  make lint                        - Run 'golint'"
-	@echo "  make staticcheck                 - Run 'staticcheck'"
+	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
-	@echo "Build:"
-	@echo "  make build                       - Build"
-	@echo "  make build-snapshot              - Build snapshot"
-	@echo "  make build-simple                - Build (using go build, without goreleaser)"
-	@echo "  make clean                       - Clean build folder"
-	@echo
-	@echo "Releasing (requires goreleaser):"
-	@echo "  make release                     - Create a release"
-	@echo "  make release-snapshot            - Create a test release"
-	@echo
-	@echo "Install locally (requires sudo):"
-	@echo "  make install                     - Copy binary from dist/ to /usr/bin"
-	@echo "  make install-deb                 - Install .deb from dist/"
-	@echo "  make install-lint                - Install golint"
 
-
-# Test/check targets
-
+## Run all tests, vetting/formatting checks and linters
 check: test fmt-check vet lint staticcheck
 
-test: .PHONY
+## Run tests
+test:
 	$(GO) test ./...
 
+## Run tests and show coverage
 coverage:
 	mkdir -p build/coverage
 	$(GO) test -race -coverprofile=build/coverage/coverage.txt -covermode=atomic ./...
 	$(GO) tool cover -func build/coverage/coverage.txt
 
+## Run tests and show coverage (as HTML)
 coverage-html:
 	mkdir -p build/coverage
 	$(GO) test -race -coverprofile=build/coverage/coverage.txt -covermode=atomic ./...
 	$(GO) tool cover -html build/coverage/coverage.txt
 
+## Upload coverage results to codecov.io
 coverage-upload:
 	cd build/coverage && (curl -s https://codecov.io/bash | bash)
 
-# Lint/formatting targets
-
+## Run 'go fmt'
 fmt:
 	$(GO) fmt ./...
 
+## Run 'go fmt', but don't change anything
 fmt-check:
 	test -z $(shell gofmt -l .)
 
+## Run 'go vet'
 vet:
 	$(GO) vet ./...
 
+## Run 'golint'
 lint:
 	which golint || $(GO) install golang.org/x/lint/golint@latest
 	$(GO) list ./... | grep -v /vendor/ | xargs -L1 golint -set_exit_status
 
-staticcheck: .PHONY
+## Run 'staticcheck'
+staticcheck:
 	rm -rf build/staticcheck
 	which staticcheck || $(GO) install honnef.co/go/tools/cmd/staticcheck@latest
 	mkdir -p build/staticcheck
@@ -80,14 +60,15 @@ staticcheck: .PHONY
 	PATH="$(PWD)/build/staticcheck:$(PATH)" staticcheck ./...
 	rm -rf build/staticcheck
 
-# Building targets
-
-build: .PHONY
+## Build
+build:
 	goreleaser build --rm-dist
 
+## Build snapshot
 build-snapshot:
 	goreleaser build --snapshot --rm-dist
 
+## Build (using go build, without goreleaser)
 build-simple: clean
 	mkdir -p dist/pcopy_linux_amd64
 	$(GO) build \
@@ -95,27 +76,26 @@ build-simple: clean
 		-ldflags \
 		"-s -w -X main.version=$(VERSION) -X main.commit=$(shell git rev-parse --short HEAD) -X main.date=$(shell date +%s)"
 
-clean: .PHONY
+## Clean build folder
+clean:
 	rm -rf dist build
 
-
-# Releasing targets
-
+## Create a release
 release:
 	goreleaser release --rm-dist
 
+## Create a test release
 release-snapshot:
 	goreleaser release --snapshot --skip-publish --rm-dist
 
-
-# Installing targets
-
+## Copy binary from dist/ to /usr/bin
 install:
 	sudo rm -f /usr/bin/pcopy /usr/bin/pcp /usr/bin/ppaste
 	sudo cp -a dist/pcopy_linux_amd64/pcopy /usr/bin/pcopy
 	sudo ln -s /usr/bin/pcopy /usr/bin/pcp
 	sudo ln -s /usr/bin/pcopy /usr/bin/ppaste
 
+## Install .deb from dist/
 install-deb:
 	sudo systemctl stop pcopy || true
 	sudo apt-get purge pcopy || true
