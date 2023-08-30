@@ -1,4 +1,14 @@
 # pcopy
+
+----
+
+## Disclaimer
+
+This is a fork of [pcopy](https://github.com/binwiederhier/pcopy) from Phillip C. Heckel who is a nice guy.
+The modifications on this fork, enable the server to be run behind a revery proxy like caddy with basicauth enabled.
+
+----
+
 [![Release](https://img.shields.io/github/release/4thel00z/pcopy.svg?color=success&style=flat-square)](https://github.com/4thel00z/pcopy/releases/latest)
 [![Go Reference](https://pkg.go.dev/badge/github.com/4thel00z/pcopy/pcopy.svg)](https://pkg.go.dev/github.com/4thel00z/pcopy/pcopy)
 [![Tests](https://github.com/4thel00z/pcopy/workflows/test/badge.svg)](https://github.com/4thel00z/pcopy/actions)
@@ -392,7 +402,7 @@ pcopy may also replace [scp](https://linux.die.net/man/1/scp) or [rsync](https:/
 when you just want to copy a file or folder across to another computer. 
 
 ## License
-Made with ❤️ by [Philipp C. Heckel](https://github.com/4thel00z/pcopy), distributed under the [Apache License 2.0](LICENSE).
+Made with ☕ by [4thel00z](https://github.com/4thel00z/pcopy), distributed under the [Apache License 2.0](LICENSE).
 
 Third party libraries:
 * [github.com/urfave/cli/v2](https://github.com/urfave/cli/v2) (MIT) is used to drive the CLI
