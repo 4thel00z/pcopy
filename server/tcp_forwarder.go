@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"io"
 	"log"
 	"net"

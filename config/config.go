@@ -6,8 +6,8 @@ import (
 	_ "embed" // Required for go:embed instructions
 	"fmt"
 	"golang.org/x/time/rate"
-	"heckel.io/pcopy/crypto"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"io"
 	"os"
 	"os/user"

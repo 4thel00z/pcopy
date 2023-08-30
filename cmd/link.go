@@ -3,9 +3,9 @@ package cmd
 import (
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"heckel.io/pcopy/client"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/server"
+	"github.com/4thel00z/pcopy/pcopy/client"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/server"
 )
 
 var cmdLink = &cli.Command{

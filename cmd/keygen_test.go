@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"heckel.io/pcopy/crypto"
-	"heckel.io/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/test"
 	"strings"
 	"testing"
 )

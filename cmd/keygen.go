@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"heckel.io/pcopy/crypto"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"strings"
 )
 

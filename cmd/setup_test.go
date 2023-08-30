@@ -3,8 +3,8 @@ package cmd
 import (
 	"encoding/base64"
 	"fmt"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/test"
 	"os"
 	"os/user"
 	"path/filepath"

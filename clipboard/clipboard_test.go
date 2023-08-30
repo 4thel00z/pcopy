@@ -3,11 +3,11 @@ package clipboard
 import (
 	"bytes"
 	_ "embed" // Required for go:embed instructions
-	"heckel.io/pcopy/clipboard/clipboardtest"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/config/configtest"
-	"heckel.io/pcopy/test"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/clipboard/clipboardtest"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/config/configtest"
+	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"io"
 	"os"
 	"strings"

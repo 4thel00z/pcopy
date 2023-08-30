@@ -2,9 +2,9 @@ package server
 
 import (
 	"fmt"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/crypto"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"strings"
 )
 

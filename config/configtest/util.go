@@ -2,8 +2,8 @@ package configtest
 
 import (
 	"fmt"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
 	"io/ioutil"
 	"os"
 	"path/filepath"

@@ -2,11 +2,11 @@ package cmd
 
 import (
 	"encoding/base64"
-	"heckel.io/pcopy/config"
-	"heckel.io/pcopy/config/configtest"
-	"heckel.io/pcopy/crypto"
-	"heckel.io/pcopy/test"
-	"heckel.io/pcopy/util"
+	"github.com/4thel00z/pcopy/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/config/configtest"
+	"github.com/4thel00z/pcopy/pcopy/crypto"
+	"github.com/4thel00z/pcopy/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/util"
 	"os"
 	"path/filepath"
 	"testing"

@@ -1,6 +1,6 @@
 # pcopy
 [![Release](https://img.shields.io/github/release/binwiederhier/pcopy.svg?color=success&style=flat-square)](https://github.com/binwiederhier/pcopy/releases/latest)
-[![Go Reference](https://pkg.go.dev/badge/heckel.io/pcopy.svg)](https://pkg.go.dev/heckel.io/pcopy)
+[![Go Reference](https://pkg.go.dev/badge/github.com/4thel00z/pcopy/pcopy.svg)](https://pkg.go.dev/github.com/4thel00z/pcopy/pcopy)
 [![Tests](https://github.com/binwiederhier/pcopy/workflows/test/badge.svg)](https://github.com/binwiederhier/pcopy/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/binwiederhier/pcopy)](https://goreportcard.com/report/github.com/binwiederhier/pcopy)
 [![codecov](https://codecov.io/gh/binwiederhier/pcopy/branch/master/graph/badge.svg?token=bdrFZttMsk)](https://codecov.io/gh/binwiederhier/pcopy)
@@ -35,9 +35,9 @@ Binaries can be found on the [releases page](https://github.com/binwiederhier/pc
 
 **Debian/Ubuntu** (*from a repository*)**:**   
 ```bash
-curl -sSL https://archive.heckel.io/apt/pubkey.txt | sudo apt-key add -
+curl -sSL https://archive.github.com/4thel00z/pcopy/apt/pubkey.txt | sudo apt-key add -
 sudo apt install apt-transport-https
-sudo sh -c "echo 'deb [arch=amd64] https://archive.heckel.io/apt debian main' > /etc/apt/sources.list.d/archive.heckel.io.list"  
+sudo sh -c "echo 'deb [arch=amd64] https://archive.github.com/4thel00z/pcopy/apt debian main' > /etc/apt/sources.list.d/archive.github.com/4thel00z/pcopy.list"  
 sudo apt update
 sudo apt install pcopy
 ```
@@ -68,7 +68,7 @@ docker run --rm -it binwiederhier/pcopy
 **Go:**
 ```bash
 # requires Go 1.16
-go get -u heckel.io/pcopy
+go get -u github.com/4thel00z/pcopy/pcopy
 ```
 
 **Manual install** (*any x86_64-based Linux*)**:**
@@ -392,7 +392,7 @@ pcopy may also replace [scp](https://linux.die.net/man/1/scp) or [rsync](https:/
 when you just want to copy a file or folder across to another computer. 
 
 ## License
-Made with ❤️ by [Philipp C. Heckel](https://heckel.io), distributed under the [Apache License 2.0](LICENSE).
+Made with ❤️ by [Philipp C. Heckel](https://github.com/4thel00z/pcopy), distributed under the [Apache License 2.0](LICENSE).
 
 Third party libraries:
 * [github.com/urfave/cli/v2](https://github.com/urfave/cli/v2) (MIT) is used to drive the CLI

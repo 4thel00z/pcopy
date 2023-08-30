@@ -2,7 +2,7 @@ package util
 
 import (
 	"crypto/rand"
-	"heckel.io/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/test"
 	"net/http/httptest"
 	"testing"
 )

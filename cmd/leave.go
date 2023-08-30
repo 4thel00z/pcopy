@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"heckel.io/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/config"
 	"os"
 )
 

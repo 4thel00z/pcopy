@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"heckel.io/pcopy/clipboard/clipboardtest"
-	"heckel.io/pcopy/config/configtest"
-	"heckel.io/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/clipboard/clipboardtest"
+	"github.com/4thel00z/pcopy/pcopy/config/configtest"
+	"github.com/4thel00z/pcopy/pcopy/test"
 	"testing"
 )
 

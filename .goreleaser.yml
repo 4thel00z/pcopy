@@ -13,7 +13,7 @@ nfpms:
   -
     package_name: pcopy
     file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
-    homepage: https://heckel.io/pcopy
+    homepage: https://github.com/4thel00z/pcopy/pcopy
     maintainer: Philipp C. Heckel <philipp.heckel@gmail.com>
     description: Copy/paste across machines
     license: Apache 2.0

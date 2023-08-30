@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	"heckel.io/pcopy/config"
+	"github.com/4thel00z/pcopy/pcopy/config"
 	"log"
 	"net/http"
 	"net/url"

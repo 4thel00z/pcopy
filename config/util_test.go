@@ -1,7 +1,7 @@
 package config
 
 import (
-	"heckel.io/pcopy/test"
+	"github.com/4thel00z/pcopy/pcopy/test"
 	"testing"
 )
 
