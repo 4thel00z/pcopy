@@ -73,7 +73,7 @@ brew install pcopy
 
 **Docker** (*see [detailed instructions](#docker-usage)*)**:**
 ```bash
-docker run --rm -it 4thel00z/pcopy
+docker run --rm -it ransomwarezz/pcopy
 ```
 
 **Go:**
@@ -268,8 +268,8 @@ To use the [pcopy image](https://hub.docker.com/r/4thel00z/pcopy), simply pull i
 shell aliases to simplify local usage: 
 
 ```bash
-docker pull 4thel00z/pcopy
-alias pcopy="docker run --rm -v ~/.cache/pcopy:/var/cache/pcopy -v ~/.config/pcopy:/etc/pcopy -p 2586:2586/tcp -it 4thel00z/pcopy"
+docker pull ransomwarezz/pcopy
+alias pcopy="docker run --rm -v ~/.cache/pcopy:/var/cache/pcopy -v ~/.config/pcopy:/etc/pcopy -p 2586:2586/tcp -it ransomwarezz/pcopy"
 alias pcp="pcopy copy"
 alias ppaste="pcopy paste"
 ```
