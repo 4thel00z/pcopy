@@ -4,7 +4,7 @@
  * In fact, please do tell me about all the things I did wrong and that I could improve. I've been trying
  * to read up on modern JS, but it's just a little much.
  *
- * Feel free to open tickets at https://github.com/binwiederhier/pcopy/issues. Thank you!
+ * Feel free to open tickets at https://github.com/4thel00z/pcopy/issues. Thank you!
  */
 
 /* All the things */
@@ -644,7 +644,7 @@ async function uploadFile(file) {
         // Let's fake a "request entity too large" error to avoid trying to upload a file that would
         // fail the upload anyway due to the server-size limits. It also avoids a bug(?) in Firefox that doesn't
         // properly trigger a "readystatechange" event for the 413 for really large payloads.
-        // See https://gist.github.com/binwiederhier/627f146d1959799be207ad8c17a8f345
+        // See https://gist.github.com/4thel00z/627f146d1959799be207ad8c17a8f345
         progressFailed(413)
         return
     }

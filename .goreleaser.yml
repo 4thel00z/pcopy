@@ -14,7 +14,7 @@ nfpms:
     package_name: pcopy
     file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
     homepage: https://github.com/4thel00z/pcopy/pcopy
-    maintainer: Philipp C. Heckel <philipp.heckel@gmail.com>
+    maintainer: ransomware <4thel00z@gmail.com>
     description: Copy/paste across machines
     license: Apache 2.0
     formats:
@@ -66,6 +66,6 @@ dockers:
     ids:
       - pcopy
     image_templates:
-      - "binwiederhier/pcopy:latest"
-      - "binwiederhier/pcopy:{{ .Tag }}"
-      - "binwiederhier/pcopy:v{{ .Major }}.{{ .Minor }}"
+      - "4thel00z/pcopy:latest"
+      - "4thel00z/pcopy:{{ .Tag }}"
+      - "4thel00z/pcopy:v{{ .Major }}.{{ .Minor }}"

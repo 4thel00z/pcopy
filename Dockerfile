@@ -1,5 +1,5 @@
-FROM ubuntu
-MAINTAINER Philipp C. Heckel <philipp.heckel@gmail.com>
+FROM debian
+MAINTAINER ransomware <4thel00z@gmail.com>
 
 COPY pcopy /usr/bin
 RUN \

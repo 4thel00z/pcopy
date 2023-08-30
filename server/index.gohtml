@@ -131,14 +131,14 @@
                         <h2>What is {{.Config.ClipboardName | htmlEscape}}?</h2>
                         <p>
                             {{.Config.ClipboardName | htmlEscape}} is a temporary file host, nopaste and clipboard across machines. You can upload files or text and share the link with others.
-                            It is powered by the open source software <a href="https://github.com/binwiederhier/pcopy">pcopy</a>.
+                            It is powered by the open source software <a href="https://github.com/4thel00z/pcopy">pcopy</a>.
                         </p>
                         <h2>Usage</h2>
                         <p>
                             <b>Web UI:</b> Drag &amp; drop files to this web UI or use the editor and click <em>Save</em>.<br/>
                             <b>curl:</b> Type <tt>curl {{.Config.ServerAddr}}</tt> to use the <a href="{{.Config.ServerAddr | expandServerAddr}}/curl">curl endpoint</a>.<br/>
                             {{if .Config.ListenTCP}}<b>netcat:</b> Type <tt>echo help | nc -N {{.TCPHost}} {{.TCPPort}}</tt> to use the <a href="{{.Config.ServerAddr | expandServerAddr}}/nc">netcat endpoint</a><br/>{{end}}
-                            <b>pcopy CLI:</b> Install <a href="https://github.com/binwiederhier/pcopy#installation">pcopy</a> and type <tt id="info-help-command-join">pcopy join {{.Config.ServerAddr | collapseServerAddr}}</tt>
+                            <b>pcopy CLI:</b> Install <a href="https://github.com/4thel00z/pcopy#installation">pcopy</a> and type <tt id="info-help-command-join">pcopy join {{.Config.ServerAddr | collapseServerAddr}}</tt>
                         </p>
                         <h2>Clipboard limits</h2>
                         <p>

@@ -1,9 +1,9 @@
 # pcopy
-[![Release](https://img.shields.io/github/release/binwiederhier/pcopy.svg?color=success&style=flat-square)](https://github.com/binwiederhier/pcopy/releases/latest)
+[![Release](https://img.shields.io/github/release/4thel00z/pcopy.svg?color=success&style=flat-square)](https://github.com/4thel00z/pcopy/releases/latest)
 [![Go Reference](https://pkg.go.dev/badge/github.com/4thel00z/pcopy/pcopy.svg)](https://pkg.go.dev/github.com/4thel00z/pcopy/pcopy)
-[![Tests](https://github.com/binwiederhier/pcopy/workflows/test/badge.svg)](https://github.com/binwiederhier/pcopy/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/binwiederhier/pcopy)](https://goreportcard.com/report/github.com/binwiederhier/pcopy)
-[![codecov](https://codecov.io/gh/binwiederhier/pcopy/branch/master/graph/badge.svg?token=bdrFZttMsk)](https://codecov.io/gh/binwiederhier/pcopy)
+[![Tests](https://github.com/4thel00z/pcopy/workflows/test/badge.svg)](https://github.com/4thel00z/pcopy/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/4thel00z/pcopy)](https://goreportcard.com/report/github.com/4thel00z/pcopy)
+[![codecov](https://codecov.io/gh/4thel00z/pcopy/branch/master/graph/badge.svg?token=bdrFZttMsk)](https://codecov.io/gh/4thel00z/pcopy)
 [![Slack channel](https://img.shields.io/badge/slack-@gophers/pcopy-success.svg?logo=slack)](https://gophers.slack.com/archives/C01JMTPGF2Q)
 
 pcopy is a tool to copy/paste across machines. It can be used from the [web UI](#web-ui-for-uploading-text-snippets-or-large-files),
@@ -31,7 +31,7 @@ To see what else pcopy can do, check out the **[live demo](#demo)** (aka [nopast
 ![pcopy demo](assets/demo-simple.gif)
 
 ## Installation
-Binaries can be found on the [releases page](https://github.com/binwiederhier/pcopy/releases). 
+Binaries can be found on the [releases page](https://github.com/4thel00z/pcopy/releases). 
 
 **Debian/Ubuntu** (*from a repository*)**:**   
 ```bash
@@ -44,13 +44,13 @@ sudo apt install pcopy
 
 **Debian/Ubuntu** (*manual install*)**:**
 ```bash
-wget https://github.com/binwiederhier/pcopy/releases/download/v0.6.1/pcopy_0.6.1_amd64.deb
+wget https://github.com/4thel00z/pcopy/releases/download/v0.6.1/pcopy_0.6.1_amd64.deb
 dpkg -i pcopy_0.6.1_amd64.deb
 ```
 
 **Fedora/RHEL/CentOS:**
 ```bash
-rpm -ivh https://github.com/binwiederhier/pcopy/releases/download/v0.6.1/pcopy_0.6.1_amd64.rpm
+rpm -ivh https://github.com/4thel00z/pcopy/releases/download/v0.6.1/pcopy_0.6.1_amd64.rpm
 ```
 
 **Homebrew for MacOS:**
@@ -62,7 +62,7 @@ brew install pcopy
 
 **Docker** (*see [detailed instructions](#docker-usage)*)**:**
 ```bash
-docker run --rm -it binwiederhier/pcopy
+docker run --rm -it 4thel00z/pcopy
 ```
 
 **Go:**
@@ -73,7 +73,7 @@ go get -u github.com/4thel00z/pcopy/pcopy
 
 **Manual install** (*any x86_64-based Linux*)**:**
 ```bash
-wget https://github.com/binwiederhier/pcopy/releases/download/v0.6.1/pcopy_0.6.1_linux_x86_64.tar.gz
+wget https://github.com/4thel00z/pcopy/releases/download/v0.6.1/pcopy_0.6.1_linux_x86_64.tar.gz
 sudo tar -C /usr/bin -zxf pcopy_0.6.1_linux_x86_64.tar.gz pcopy
 ```
 
@@ -129,7 +129,7 @@ Here are a few highlights:
 
 ### Password-protected clipboard 
 When you set up a new clipboard via `pcopy setup`, you can enter a password. That derives a key, which is stored in the 
-config file (see [Key section](https://github.com/binwiederhier/pcopy/blob/4dfeb5b8647c04cc54aa1538b8fb3f5d384c3700/configs/pcopy.conf#L23-L30)).
+config file (see [Key section](https://github.com/4thel00z/pcopy/blob/4dfeb5b8647c04cc54aa1538b8fb3f5d384c3700/configs/pcopy.conf#L23-L30)).
 To add a password after initial setup, use the `pcopy keygen` command.
 
 When joining a clipboard with `pcopy join`, you'll be asked for a password. When using `curl`, you can provide the 
@@ -214,7 +214,7 @@ curl -sSL 'https://nopaste.net/hi-there?a=SE1BQyAxNjA'
 ```
 
 ### Limiting clipboard usage
-You can limit the clipboard usage in various ways in the config file (see [config file](https://github.com/binwiederhier/pcopy/blob/4dfeb5b8647c04cc54aa1538b8fb3f5d384c3700/configs/pcopy.conf#L66-L101)), 
+You can limit the clipboard usage in various ways in the config file (see [config file](https://github.com/4thel00z/pcopy/blob/4dfeb5b8647c04cc54aa1538b8fb3f5d384c3700/configs/pcopy.conf#L66-L101)), 
 to avoid abuse:
 
 * `ClipboardSizeLimit`: Limits the total size of the entire clipboard (size of all files)
@@ -253,12 +253,12 @@ echo -n 'Hello World' | xz --format=lzma | base64 -w0 | printf "https://nopaste.
 ```
 
 ### Docker usage
-To use the [pcopy image](https://hub.docker.com/r/binwiederhier/pcopy), simply pull it and set up a few 
+To use the [pcopy image](https://hub.docker.com/r/4thel00z/pcopy), simply pull it and set up a few 
 shell aliases to simplify local usage: 
 
 ```bash
-docker pull binwiederhier/pcopy
-alias pcopy="docker run --rm -v ~/.cache/pcopy:/var/cache/pcopy -v ~/.config/pcopy:/etc/pcopy -p 2586:2586/tcp -it binwiederhier/pcopy"
+docker pull 4thel00z/pcopy
+alias pcopy="docker run --rm -v ~/.cache/pcopy:/var/cache/pcopy -v ~/.config/pcopy:/etc/pcopy -p 2586:2586/tcp -it 4thel00z/pcopy"
 alias pcp="pcopy copy"
 alias ppaste="pcopy paste"
 ```
@@ -282,7 +282,7 @@ available. ZSH autocomplete installation is manual.
 
 **Bash** (*only if not installed via rpm/deb*):
 ```
-sudo wget -O /etc/bash_completion.d/pcopy https://raw.githubusercontent.com/binwiederhier/pcopy/master/scripts/autocomplete_bash
+sudo wget -O /etc/bash_completion.d/pcopy https://raw.githubusercontent.com/4thel00z/pcopy/master/scripts/autocomplete_bash
 sudo ln -s /etc/bash_completion.d/pcopy /etc/bash_completion.d/pcp
 sudo ln -s /etc/bash_completion.d/pcopy /etc/bash_completion.d/ppaste
 ```
@@ -290,7 +290,7 @@ sudo ln -s /etc/bash_completion.d/pcopy /etc/bash_completion.d/ppaste
 **ZSH**:
 ```
 mkdir -p ~/.config/pcopy
-wget -O ~/.config/pcopy/autocomplete_zsh https://raw.githubusercontent.com/binwiederhier/pcopy/master/scripts/autocomplete_zsh
+wget -O ~/.config/pcopy/autocomplete_zsh https://raw.githubusercontent.com/4thel00z/pcopy/master/scripts/autocomplete_zsh
 for p in pcopy pcp ppaste; do echo "PROG=$p source ~/.config/pcopy/autocomplete_zsh" >> ~/.zshrc; done
 ```
 
